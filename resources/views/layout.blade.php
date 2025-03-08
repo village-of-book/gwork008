@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>掲示板アプリ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-primary">
@@ -36,6 +38,29 @@
                 </ul>
         </div>
     </nav>
+
+    @if(session('success'))
+    <div class="alert alert-success" role="alert">
+        <div class="text-center">
+        <h4 class="alert-heading">{{ session('success') }}</h4>
+            <hr>
+            <p class="mb-0">マイケル・ジョーダン（アメリカの元プロバスケットボール選手）</p>
+            <p>私はキャリアを通じて9000回以上シュートを外し、300試合に敗れ、決勝シュートを任されて26回も外しています。人生で何度も何度も失敗したからこそ、今の成功があるんです。</p>
+        </div>
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger" role="alert">
+        <div class="text-center">
+        <h4 class="alert-heading">失敗を登録できませんでした。</h4>
+            <hr>
+            <p class="mb-0">また一つ学びを得ましたね</p>            
+            <p>失敗は成功のもと。どんどん失敗しましょう！</p>
+        </div>
+    </div>
+    @endif
+
     <div class="container mt-4">
         @yield('content')
     </div>

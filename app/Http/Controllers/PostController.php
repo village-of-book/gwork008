@@ -94,7 +94,7 @@ class PostController extends Controller
             'user_id'=> auth()->id()
         ]);
 
-        return redirect()->route('posts.show',['post' => $post->id]);
+        return redirect()->route('posts.show',['post' => $post->id])->with('success','失敗を登録できました。');
     }
 
     /**

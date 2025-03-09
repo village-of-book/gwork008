@@ -39,7 +39,7 @@
         </div>
     </form>
 
-    @foreach($posts as $post)
+    <!-- @foreach($posts as $post)
         <div class="card mb-3">
             <div class="card-body">
                 <h3 class="card-title">{{ $post->title }}</h3>
@@ -49,9 +49,47 @@
             </div>
 
         </div>
+    @endforeach -->
+    
+    @foreach($posts as $post)
+        @if(Auth::check() && Auth::id() === $post->user_id)
+            <div class="card mb-3">
+                <div class="card-body">
+                    <label for="title" class="form-label">(タイトル)</label>
+                    <h3 class="card-title">{{ $post->title }}</h3>
+                    <div class=row>
+                        <div class="col">
+                        <label for="content_failure" class="form-label">(✖︎失敗✖︎)</label>
+                        <p class="card-text">{{ $post->content_failure }}</p>
+                        </div>
+
+                        <div class="col">
+                        <label for="content_failure" class="form-label">(⚪︎成功⚪︎)</label>
+                        <p class="card-text">{{ $post->content_success }}</p>
+                        </div>
+                    </div>
+                    <!-- <div class="col">
+                    <label for="content_failure" class="form-label">(✖︎失敗✖︎)</label>
+                    <p class="card-text">{{ $post->content_failure }}</p>
+                    </div>
+                    <div class="col">
+                    <label for="content_failure" class="form-label">(⚪︎成功⚪︎)</label>
+                    <p class="card-text">{{ $post->content_success }}</p>
+                    </div> -->
+                    <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a>
+                    <!-- いいねボタン -->
+                    <form action="{{ route('posts.like', $post->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button type="submit" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-primary' : 'btn-outline-primary' }}">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    </button>
+                    <!-- いいね数の表示 -->
+                     <p>{{ $post->likes->count() }} 件の注意！</p>
+                    </form>
+                </div>
+            </div>
+        @endif
     @endforeach
     <!-- ページネーションのリンク -->
-     <div class="d-flex justify-content-center mt-4">
-        {{ $posts->links() }}
-     </div>
+
 @endsection

@@ -50,10 +50,6 @@
     @else
         <p>コメントを投稿するには、ログインが必要です。</p>
 
-    <!-- ページネーションのリンク -->
-    <div class="d-flex justify-content-center mt-4">
-    {{ $comments->links() }}
-    </div>
     @endauth
 
     <!-- レイアウト調整の行 -->
@@ -68,7 +64,7 @@
             <div class="card mb-2">
                 <div class="card-body">
                     <p class="card-text">{{ $comment->content }}</p>
-                    <p class="text-muted">投稿日時: {{ $comment->created_at->format('Y-m-d H:i') }}</p>
+                    <p class="text-muted">投稿日時: {{ $comment->created_at->format('Y-m-d H:i:s') }}</p>
                 </div>
 
             </div>

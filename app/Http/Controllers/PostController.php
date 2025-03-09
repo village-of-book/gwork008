@@ -13,6 +13,10 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        If (!Auth::check()){
+            return redirect()->route('login');
+        }
+
         $query = Post::query();
 
         // 絞り込み検索
@@ -50,7 +54,7 @@ class PostController extends Controller
             case 'title_desc':
                 $query->orderBy('title', 'desc');
                 break;
-            case 'oldest':
+            case 'newest':
                 $query->orderBy('created_at', 'desc');
                 break;
             default:
@@ -58,7 +62,8 @@ class PostController extends Controller
                 break;
         }
 
-        $posts = $query->paginate(3);
+        // $posts = $query->paginate(3);
+        $posts = $query->get();
         return view('posts.index', compact('posts'));
     }
 
@@ -103,7 +108,7 @@ class PostController extends Controller
     public function show(string $id)
     {
         $post = Post::with('comments.user')->findOrFail($id);
-        $comments = $post->comments()->with('user')->paginate(2);
+        $comments = $post->comments()->orderBy('created_at', 'desc')->with('user')->paginate(2);
         return view('posts.show',compact('post','comments'));
     }
 

@@ -24,6 +24,9 @@
                 <ul class="navbar-nav">
                     @if (Auth::check())
                         <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('posts.index') }}">一覧に戻る</a>
+                        </li>
+                        <li class="nav-item">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
@@ -32,6 +35,8 @@
                     @else
                     <li class="nav-item">
                          <a class="nav-link text-white" href="{{ route('login') }}">ログイン</a>
+                    </li>
+                    <li class="nav-item">
                          <a class="nav-link text-white" href="{{ route('register') }}">新規登録</a>
                     </li>
                     @endif

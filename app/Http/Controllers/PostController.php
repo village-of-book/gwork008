@@ -99,7 +99,7 @@ class PostController extends Controller
             'user_id'=> auth()->id()
         ]);
 
-        return redirect()->route('posts.show',['post' => $post->id])->with('success','失敗を登録できました。');
+        return redirect()->route('posts.show',['post' => $post->id])->with('success','登録できました。');
     }
 
     /**
@@ -147,7 +147,8 @@ class PostController extends Controller
             'content_failure' => $request->content_failure,
             'content_success' => $request->content_success
         ]);
-        return redirect()->route('posts.show',['post' => $post->id]);
+        // return redirect()->route('posts.show',['post' => $post->id]);
+        return redirect()->route('posts.show',['post' => $post->id])->with('success','登録できました。');
     }
 
     /**

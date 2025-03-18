@@ -20,6 +20,14 @@ class LikeController extends Controller
 
         $post->likes()->create(['user_id' => $user->id]);
 
-        return redirect()->back();
+        // jsonで、値を取ってくる
+        return response()->json([
+            // 「いいね」がされているか、存在をtrue or faultsで値を取ってくる
+            'liked' => $post->likes()->where('user_id', $user->id)->exists(),
+            // 「いいね」のされた数を値で取ってくる
+            'like_count' => $post->likes()->count(),
+        ]);
+        // 同じページに戻ってくる処理
+        // return redirect()->back();
     }
 }

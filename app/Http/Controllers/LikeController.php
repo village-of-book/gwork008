@@ -17,6 +17,7 @@ class LikeController extends Controller
         // いいね.をつける機能
         $user = Auth:: user();
         $like = $post->likes()->where('user_id', $user->id);
+        // $post_id = $post('post_id', $post->id);
 
         $post->likes()->create(['user_id' => $user->id]);
 
@@ -26,6 +27,8 @@ class LikeController extends Controller
             'liked' => $post->likes()->where('user_id', $user->id)->exists(),
             // 「いいね」のされた数を値で取ってくる
             'like_count' => $post->likes()->count(),
+            // 「いいね」のされたpost_idの値を取ってくる
+            // 'liked_post_id' => $post['post_id']
         ]);
         // 同じページに戻ってくる処理
         // return redirect()->back();

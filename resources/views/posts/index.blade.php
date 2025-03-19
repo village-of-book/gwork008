@@ -84,22 +84,6 @@
                     <div class="mt-3"></div>
 
                     <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a>
-                    <!-- いいねボタン -->
-                    <!-- <form action="{{ route('posts.like', $post->id) }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-primary' : 'btn-outline-primary' }}">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    </button>  -->
-                    <!-- いいね数の表示 -->
-                    <!-- <p>{{ $post->likes->count() }} 件の注意！</p>
-                    </form> -->
-
-                    <!-- いいねボタン -->
-                    <!-- <form action="{{ route('posts.like', $post->id) }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-primary' : 'btn-outline-primary' }}">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    </button>  -->
 
                     <!-- 暫定対策 -->
                     <!-- いいね数の表示 -->
@@ -124,7 +108,7 @@
     <!-- ページネーションのリンク -->
 
         <!-- 無しカウントされないJavaScriptで非同期通信の処理 -->
-        <!-- <script>
+        <script>
             $(document).ready(function(){
                 $('#likeButton').on('click', function(e){
                     e.preventDefault();
@@ -156,6 +140,6 @@
                     });
                 });
             });
-        </script> -->
+        </script>
 
 @endsection

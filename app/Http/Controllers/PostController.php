@@ -18,7 +18,6 @@ class PostController extends Controller
         }
 
         $query = Post::query();
-
         // 絞り込み検索
         if ($request->has('search') && $request->filled('search')){
             $searchType = $request->input('search_type');

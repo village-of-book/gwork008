@@ -44,21 +44,44 @@ class PostController extends Controller
         $sortType = $request->input('sort', 'newest');
 
         switch($sortType){
-            case 'oldest':
-                $query->orderBy('created_at', 'asc');
-                break;
-            case 'title_asc':
-                $query->orderBy('title', 'asc');
-                break;
-            case 'title_desc':
-                $query->orderBy('title', 'desc');
-                break;
-            case 'newest':
-                $query->orderBy('created_at', 'desc');
-                break;
-            default:
-                $query->orderBy('created_at', 'desc');
-                break;
+            // case 'oldest':
+            //     $query->orderBy('created_at', 'asc');
+            //     break;
+            // case 'title_asc':
+            //     $query->orderBy('title', 'asc');
+            //     break;
+            // case 'title_desc':
+            //     $query->orderBy('title', 'desc');
+            //     break;
+            // case 'newest':
+            //     $query->orderBy('created_at', 'desc');
+            //     break;
+            // default:
+            //     $query->orderBy('created_at', 'desc');
+            //     break;
+
+                case 'created_oldest':
+                    $query->orderBy('created_at', 'asc');
+                    break;
+                case 'created_newest':
+                    $query->orderBy('created_at', 'desc');
+                    break;    
+                case 'title_asc':
+                    $query->orderBy('title', 'asc');
+                    break;
+                case 'title_desc':
+                    $query->orderBy('title', 'desc');
+                    break;
+                case 'updated_oldest':
+                    $query->orderBy('updated_at', 'asc');
+                    break;    
+                case 'updated_newest':
+                    $query->orderBy('updated_at', 'desc');
+                    break;
+                default:
+                    $query->orderBy('updated_at', 'desc');
+                    break;
+    
         }
 
         // $posts = $query->paginate(3);

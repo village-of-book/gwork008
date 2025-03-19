@@ -33,10 +33,19 @@
             <div class="col-md-2">
                 <div class="input-group">
                     <select name="sort" class="form-select">
-                        <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>新しい順</option>
+
+                        <!-- <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>新しい順</option>
                         <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>古い順</option>
                         <option value="title_asc" {{ request('sort') == 'title_asc' ? 'selected' : '' }}>タイトル昇順</option>
+                        <option value="title_desc" {{ request('sort') == 'title_desc' ? 'selected' : '' }}>タイトル降順</option> -->
+
+                        <option value="updated_newest" {{ request('sort') == 'updated_newest' ? 'selected' : '' }}>更新新しい順</option>
+                        <option value="updated_oldest" {{ request('sort') == 'updated_oldest' ? 'selected' : '' }}>更新古い順</option>
+                        <option value="created_newest" {{ request('sort') == 'created_newest' ? 'selected' : '' }}>登録新しい順</option>
+                        <option value="created_oldest" {{ request('sort') == 'created_oldest' ? 'selected' : '' }}>登録古い順</option>
+                        <option value="title_asc" {{ request('sort') == 'title_asc' ? 'selected' : '' }}>タイトル昇順</option>
                         <option value="title_desc" {{ request('sort') == 'title_desc' ? 'selected' : '' }}>タイトル降順</option>
+
                     </select>
                 </div>
             </div>
@@ -83,21 +92,51 @@
                     <!-- 余白（レイアウト調整） -->
                     <div class="mt-3"></div>
 
-                    <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a>
+                    <div class="row">
+
+                        <div class="col">
+                            <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a>
+                        </div>
+
+                        <div class="col">
+                            <!-- いいね数の表示 -->
+                            <p><i class="bi bi-exclamation-circle-fill" style="color:blue;"></i> {{ $post->likes->count() }} 件</p>
+                        </div>
+
+                        <div class="col">
+                            <!-- コメント数の表示 -->
+                            <p><i class="bi bi-chat-dots-fill" style="color:gray;"></i> {{ $post->comments->count() }} 件</p>                            
+                        </div>
+
+                        <div class="col">
+                            <p class="text-muted">タイトル、失敗、成功の更新日時: </p>
+                            <p class="text-muted">{{ $post->updated_at->format('Y-m-d H:i:s') }}</p>
+                        </div>
+
+                    </div>
+
+                    <!-- <p class="text-muted">更新日時: {{ $post->updated_at->format('Y-m-d H:i:s') }}</p> -->
+
+                    <!-- <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a> -->
 
                     <!-- 暫定対策 -->
                     <!-- いいね数の表示 -->
-                    <p>{{ $post->likes->count() }} 件の<i class="bi bi-exclamation-circle-fill" style="color:blue;"></i></p>
+                    <!-- <p><i class="bi bi-exclamation-circle-fill" style="color:blue;"></i> {{ $post->likes->count() }} 件</p> -->
+
+                    <!-- 暫定対策 -->
+                    <!-- コメント数の表示 -->
+                    <!-- <p><i class="bi bi-chat-dots-fill" style="color:gray;"></i> {{ $post->comments->count() }} 件</p> -->
+
                     <!-- </form> -->
 
                     <!-- JavaScriptで非同期通信の処理 -->                    
                     <!-- いいねボタン -->
-                    <button id="likeButton" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-primary' : 'btn-outline-primary' }}">
+                    <!-- <button id="likeButton" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-primary' : 'btn-outline-primary' }}">
                         <i class="bi bi-exclamation-circle-fill"></i>
-                    </button>
+                    </button> -->
                     <!-- JavaScriptで非同期通信の処理 -->                    
                     <!-- いいね数の表示 -->
-                    <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p>
+                    <!-- <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p> -->
 
                 </div>
             </div>

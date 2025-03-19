@@ -34,11 +34,6 @@
                 <div class="input-group">
                     <select name="sort" class="form-select">
 
-                        <!-- <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>新しい順</option>
-                        <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>古い順</option>
-                        <option value="title_asc" {{ request('sort') == 'title_asc' ? 'selected' : '' }}>タイトル昇順</option>
-                        <option value="title_desc" {{ request('sort') == 'title_desc' ? 'selected' : '' }}>タイトル降順</option> -->
-
                         <option value="updated_newest" {{ request('sort') == 'updated_newest' ? 'selected' : '' }}>更新新しい順</option>
                         <option value="updated_oldest" {{ request('sort') == 'updated_oldest' ? 'selected' : '' }}>更新古い順</option>
                         <option value="created_newest" {{ request('sort') == 'created_newest' ? 'selected' : '' }}>登録新しい順</option>
@@ -115,70 +110,11 @@
 
                     </div>
 
-                    <!-- <p class="text-muted">更新日時: {{ $post->updated_at->format('Y-m-d H:i:s') }}</p> -->
-
-                    <!-- <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a> -->
-
-                    <!-- 暫定対策 -->
-                    <!-- いいね数の表示 -->
-                    <!-- <p><i class="bi bi-exclamation-circle-fill" style="color:blue;"></i> {{ $post->likes->count() }} 件</p> -->
-
-                    <!-- 暫定対策 -->
-                    <!-- コメント数の表示 -->
-                    <!-- <p><i class="bi bi-chat-dots-fill" style="color:gray;"></i> {{ $post->comments->count() }} 件</p> -->
-
-                    <!-- </form> -->
-
-                    <!-- JavaScriptで非同期通信の処理 -->                    
-                    <!-- いいねボタン -->
-                    <!-- <button id="likeButton" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-primary' : 'btn-outline-primary' }}">
-                        <i class="bi bi-exclamation-circle-fill"></i>
-                    </button> -->
-                    <!-- JavaScriptで非同期通信の処理 -->                    
-                    <!-- いいね数の表示 -->
-                    <!-- <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p> -->
-
                 </div>
             </div>
 
         @endif
 
     @endforeach
-    <!-- ページネーションのリンク -->
-
-        <!-- 無しカウントされないJavaScriptで非同期通信の処理 -->
-        <script>
-            $(document).ready(function(){
-                $('#likeButton').on('click', function(e){
-                    e.preventDefault();
-
-                    const button = $(this);
-                    const likeCountElement = $('#likeCount');
-
-                    $.ajax({
-                        url: "{{ route('posts.like', $post->id) }}",
-                        method: 'POST',
-                        data: {},
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(data) {
-                            if(data.liked){
-                                button.removeClass('btn-outline-primary').addClass('btn-primary');
-                                button.html('<i class="bi bi-exclamation-circle-fill"></i>');
-                            }else {
-                                button.removeClass('btn-primary').addClass('btn-outline-primary');
-                                button.html('<i class="bi bi-exclamation-circle"></i>');
-                            }
-
-                            likeCountElement.text(data.like_count + ' 件の注意だよ')
-                        },
-                        error: function(error) {
-                            console.error('Error', error);
-                        }
-                    });
-                });
-            });
-        </script>
 
 @endsection

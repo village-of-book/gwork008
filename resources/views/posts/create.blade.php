@@ -14,10 +14,7 @@
     <!-- 検索キーワード入力エリア -->
     <div class="row">
         <div class="col-md-9">
-            <!-- <div class="keyword_area"> -->
-                <!-- <input type="text" name="search" class="form-control" placeholder="検索キーワードを〜〜で入力すると、タイトル末尾に＃〜〜が追加されます" value="{{ request('search') }}"> -->
                 <input id="keyword_area" type="text" name="search" class="form-control" placeholder="検索キーワードを〜〜で入力すると、タイトル末尾に＃〜〜が追加されます" value="{{ request('search') }}">
-            <!-- </div> -->
         </div>
 
         <!-- 余白（レイアウト調整） -->

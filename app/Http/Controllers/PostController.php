@@ -44,21 +44,6 @@ class PostController extends Controller
         $sortType = $request->input('sort', 'newest');
 
         switch($sortType){
-            // case 'oldest':
-            //     $query->orderBy('created_at', 'asc');
-            //     break;
-            // case 'title_asc':
-            //     $query->orderBy('title', 'asc');
-            //     break;
-            // case 'title_desc':
-            //     $query->orderBy('title', 'desc');
-            //     break;
-            // case 'newest':
-            //     $query->orderBy('created_at', 'desc');
-            //     break;
-            // default:
-            //     $query->orderBy('created_at', 'desc');
-            //     break;
 
                 case 'created_oldest':
                     $query->orderBy('created_at', 'asc');
@@ -169,7 +154,6 @@ class PostController extends Controller
             'content_failure' => $request->content_failure,
             'content_success' => $request->content_success
         ]);
-        // return redirect()->route('posts.show',['post' => $post->id]);
         return redirect()->route('posts.show',['post' => $post->id])->with('success','登録できました。');
     }
 

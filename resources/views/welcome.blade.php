@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>失敗アプリNOMOTO</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -59,7 +59,30 @@
                     </header>
 
                     <main class="mt-6">
-                        <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
+                    <body class="antialiased">
+                        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+                            @if (Route::has('login'))
+                                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                                    @auth
+                                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ダッシュボード</a>
+                                    @else
+                                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ログイン</a>
+
+                                        @if (Route::has('register'))
+                                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">会員登録</a>
+                                        @endif
+                                    @endauth
+                                </div>
+                            @endif
+
+                            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 text-white dark:text-white">
+                                <h1 class="text-4xl mb-4 text-center">失敗アプリNOMOTO</h1>
+                                <p>〜失敗は成功のもと〜</p>
+                            </div>
+                        </div>
+                    </body>
+
+                        <!-- <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
                             <a
                                 href="https://laravel.com/docs"
                                 id="docs-card"
@@ -163,7 +186,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </main>
 
                     <footer class="py-16 text-center text-sm text-black dark:text-white/70">

@@ -16,18 +16,23 @@
         <!-- card 外枠 -->
         <div class="card mb-3">
             <div class="card-body">
-                    <div class=row>
+                <!-- card 投稿者 -->
+                <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p>
+                <!-- card タイトル -->
+                <h3 class="card-title">{{ $post->title }}</h3>
+
+                    <!-- <div class=row> -->
                         <!-- card タイトル -->
-                        <div class="col">
+                        <!-- <div class="col">
                            <h3 class="card-title">{{ $post->title }}</h3>
-                        </div>
+                        </div> -->
 
                         <!-- card 投稿者 -->
-                        <div class="col">
-                            <p class="text-muted">投稿者: {{ $user->name }}</p>
+                        <!-- <div class="col">
+                            <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p>
                         </div>    
 
-                    </div>
+                    </div> -->
                 <!-- <h3 class="card-title">{{ $post->title }}</h3>
                 <p class="text-muted">投稿者: {{ $post->title }}</p> -->
                     <div class=row>
@@ -68,7 +73,7 @@
                 </button>
                 <!-- いいね数の表示 -->
                  <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p>
-                 <p class="text-muted">投稿者: {{ $user->name }}</p>
+                 <!-- <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p> -->
 
             @endif
         </div>

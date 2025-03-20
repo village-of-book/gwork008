@@ -31,18 +31,34 @@
             <label for="title" class="form-label">タイトル</label>
             <input type="text" name="title" class="form-control" value="{{ $post->title}}" required>
         </div>
+
+            <!-- 余白（レイアウト調整） -->
+            <div class="mt-3">
+
         <div class="row">
             <div class="col">
-                <label for="content_failure" class="form-label">✖︎失敗✖︎</label>
-                <textarea name="content_failure" class="form-control" rows="5" required> {{ $post->content_failure}}</textarea>
+                <div class="card h-100">
+                    <!-- <label for="content_failure" class="form-label">✖︎失敗✖︎</label> -->
+                    <h5 class="card-header">✖︎失敗✖︎</h5>
+                    <textarea name="content_failure" class="form-control" rows="5" required> {{ $post->content_failure}}</textarea>
+                </div>
             </div>
             <div class="col">
-                <label for="content_success" class="form-label">⚪︎成功⚪︎</label>
-                <textarea name="content_success" class="form-control" rows="5" required>{{ $post->content_success}}</textarea>
+                <div class="card h-100">
+                    <!-- <label for="content_success" class="form-label">⚪︎成功⚪︎</label> -->
+                    <h5 class="card-header">⚪︎成功⚪︎</h5>
+                    <textarea name="content_success" class="form-control" rows="5" required>{{ $post->content_success}}</textarea>
+                </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success">更新</button>
-        <a href="{{ route('posts.show', $post->id)}}" class="btn btn-secondary">戻る</a>
+
+        <div class="mt-3">
+            <button type="submit" class="btn btn-success">更新</button>
+        </div>
+
+        <div class="mt-3">
+            <a href="{{ route('posts.show', $post->id)}}" class="btn btn-secondary">戻る</a>
+        </div>
     </form>
 
     <script>

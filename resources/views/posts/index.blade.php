@@ -1,3 +1,7 @@
+<?php
+    // 現在認証しているユーザーを取得
+    $user = auth()->user();
+?>
 @extends('layout')
 
 @section('content')
@@ -58,6 +62,8 @@
             <!-- card 外枠 -->
             <div class="card mb-3">
                 <div class="card-body">
+                    <!-- card 投稿者 -->
+                    <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p>
                     <!-- card タイトル -->
                     <h3 class="card-title">{{ $post->title }}</h3>
                     <div class=row>

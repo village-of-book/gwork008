@@ -1,3 +1,7 @@
+<?php
+    // 現在認証しているユーザーを取得
+    $user = auth()->user();
+?>
 @extends('layout')
 
 @section('content')
@@ -12,8 +16,20 @@
         <!-- card 外枠 -->
         <div class="card mb-3">
             <div class="card-body">
-                <!-- card タイトル -->
-                <h3 class="card-title">{{ $post->title }}</h3>
+                    <div class=row>
+                        <!-- card タイトル -->
+                        <div class="col">
+                           <h3 class="card-title">{{ $post->title }}</h3>
+                        </div>
+
+                        <!-- card 投稿者 -->
+                        <div class="col">
+                            <p class="text-muted">投稿者: {{ $user->name }}</p>
+                        </div>    
+
+                    </div>
+                <!-- <h3 class="card-title">{{ $post->title }}</h3>
+                <p class="text-muted">投稿者: {{ $post->title }}</p> -->
                     <div class=row>
                     <!-- card 中身 -->
                         <!-- card 失敗 -->
@@ -52,6 +68,7 @@
                 </button>
                 <!-- いいね数の表示 -->
                  <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p>
+                 <p class="text-muted">投稿者: {{ $user->name }}</p>
 
             @endif
         </div>

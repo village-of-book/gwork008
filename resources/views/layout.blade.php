@@ -37,6 +37,12 @@
 
       $random_number = rand(1, 15);
 
+    // 現在認証しているユーザーを取得
+    $user = auth()->user();
+
+    // 現在認証しているユーザーを取得
+    // $user_name =  $user('name');
+
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +71,8 @@
                 <a class="navbar-brand text-white" href="{{ route('posts.index') }}">〜失敗は成功のもと〜</a>
                 </div>
             </div>
+
+            <div class="navbar-brand text-white">こんにちは {{ $user->name }}さん</div>
                 
             <div class="ml-auto"></div>
                 <ul class="navbar-nav">

@@ -18,8 +18,9 @@ class PostController extends Controller
         }
 
         $query = Post::query();
+
         // 絞り込み検索
-        if ($request->has('search') ){
+        
             $searchType = $request->input('search_type');
             $searchKeyword = $request->input('search');
 
@@ -35,7 +36,6 @@ class PostController extends Controller
                     break;
             }
 
-        }
         
         // 並び替え処理
         $sortType = $request->input('sort', 'newest');

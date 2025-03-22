@@ -27,11 +27,8 @@
             <div class="col-md-8">
                 <div class="input-group">
                     <select name="search_type" class="form-select">
-                        <!-- <option value="partial" {{ request('search_type') == 'partial' ? 'selected' : ''}}>部分一致</option>                
-                        <option value="prefix" {{ request('search_type') == 'prefix' ? 'selected' : ''}}>前方一致</option>
-                        <option value="suffix" {{ request('search_type') == 'suffix' ? 'selected' : ''}}>後方一致</option> -->
-                        <option value="all_everyone" {{ request('search_type') == 'all_everyone' ? 'selected' : ''}}>みんなの失敗</option>                
                         <option value="all_mine" {{ request('search_type') == 'all_mine' ? 'selected' : ''}}>自分の失敗</option>
+                        <option value="all_everyone" {{ request('search_type') == 'all_everyone' ? 'selected' : ''}}>みんなの失敗</option>                
                     </select>
 
                     <input type="text" name="search" class="form-control" placeholder="検索キーワード" value="{{ request('search') }}">

@@ -96,9 +96,11 @@
 
                     <div class="row">
 
+                    @if(Auth::check() && Auth::id() === $post->user_id)
                         <div class="col">
                             <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a>
                         </div>
+                    @endif
 
                         <div class="col">
                             <!-- いいね数の表示 -->

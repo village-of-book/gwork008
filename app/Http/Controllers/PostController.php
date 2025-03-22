@@ -19,22 +19,19 @@ class PostController extends Controller
 
         $query = Post::query();
         // 絞り込み検索
-        if ($request->has('search') && $request->filled('search')){
+        if ($request->has('search') ){
             $searchType = $request->input('search_type');
             $searchKeyword = $request->input('search');
 
             switch($searchType){
-                case 'prefix':
-                    $query->where('title', 'like', $searchKeyword . '%');
-                    break;
-                case 'suffix':
-                    $query->where('title', 'like', '%' . $searchKeyword);
-                    break;
-                case 'partial':
+                case 'all_everyone':
                     $query->where('title', 'like', '%' . $searchKeyword . '%');
+                    break;
+                case 'all_mine':
+                    $query->where('user_id', Auth::id())->where('title', 'like', '%' . $searchKeyword . '%');
                     break;
                 default:
-                    $query->where('title', 'like', '%' . $searchKeyword . '%');
+                    $query->where('user_id', Auth::id())->where('title', 'like', '%' . $searchKeyword . '%');
                     break;
             }
 
@@ -69,7 +66,6 @@ class PostController extends Controller
     
         }
 
-        // $posts = $query->paginate(3);
         $posts = $query->get();
         return view('posts.index', compact('posts'));
     }

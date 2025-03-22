@@ -17,7 +17,7 @@
         <div class="card mb-3">
             <div class="card-body">
                 <!-- card 投稿者 -->
-                <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p>
+                <!-- <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p> -->
                 <!-- card タイトル -->
                 <h3 class="card-title">{{ $post->title }}</h3>
 
@@ -67,18 +67,41 @@
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">削除</button>
                 </form>
+
+                <div class="mt-3"></div>
+
                 <!-- いいねボタン -->
-                <button id="likeButton" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-outline-primary' : 'btn-primary' }}">
+                <!-- <button id="likeButton" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-outline-primary' : 'btn-primary' }}">
                     <i class="bi bi-exclamation-circle-fill"></i>
-                </button>
+                </button> -->
                 <!-- いいね数の表示 -->
-                 <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p>
+                 <!-- <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p> -->
                  <!-- <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p> -->
+
+                 <!-- <div> -->
+                <!-- いいね数の表示 -->
+                <!-- <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p> -->
+                <!-- <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p> -->                    
+                <!-- </div> -->
 
             @endif
         </div>
 
     </div>
+
+    <!-- コメントフォーム -->
+    <h4>※必要に応じて、注意ボタンをクリック（より注意を払う必要が有るなら、連打しよう！）</h4>
+
+    <!-- いいねボタン -->
+     <form action="{{ route('posts.like', $post->id) }}" method="POST" style="display:inline;">
+        @csrf
+        <button type="submit" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-outline-primary' : 'btn-primary' }}">
+        {!! $post->likes->contains('user_id', auth()->id()) ? '<i class="bi bi-exclamation-circle-fill"></i>' : '<i class="bi bi-exclamation-circle"></i>' !!}
+        </button>
+     </form>
+    <!-- いいね数の表示 -->
+    <p>{{ $post->likes->count() }} 件の注意！</p>
+
 
     <!-- コメントフォーム -->
      <h3>コメントを投稿する</h3>
@@ -121,7 +144,7 @@
         </div>
 
         <!-- JavaScriptで非同期通信の処理 -->
-         <script>
+         <!-- <script>
             $(document).ready(function(){
                 $('#likeButton').on('click', function(e){
                     e.preventDefault();
@@ -154,6 +177,6 @@
                 });
             });
 
-        </script>
+        </script> -->
 
 @endsection

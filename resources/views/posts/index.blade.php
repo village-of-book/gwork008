@@ -122,11 +122,9 @@
                             <p class="text-muted">{{ $post->updated_at->format('Y-m-d H:i:s') }}</p>
                         </div>
 
-                        @if(Auth::check() && Auth::id() === $post->user_id)
                         <div>
                             <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a>
                         </div>
-                        @endif
 
                     </div>
 

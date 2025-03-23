@@ -88,7 +88,7 @@
         </div>
 
     </div>
-
+@if(Auth::check() && Auth::id() === $post->user_id)
     <!-- コメントフォーム -->
     <h4>※必要に応じて、注意ボタンをクリック（より注意を払う必要が有るなら、連打しよう！）</h4>
 
@@ -101,8 +101,9 @@
      </form>
     <!-- いいね数の表示 -->
     <p>{{ $post->likes->count() }} 件の注意！</p>
+@endif
 
-
+@if(Auth::check() && Auth::id() === $post->user_id)
     <!-- コメントフォーム -->
      <h3>コメントを投稿する</h3>
      @auth
@@ -118,7 +119,7 @@
         <p>コメントを投稿するには、ログインが必要です。</p>
 
     @endauth
-
+    @endif
     <!-- レイアウト調整の行 -->
     <div class="mt-3"></div>
 
@@ -127,6 +128,7 @@
      @if ($comments->isEmpty())
         <p>コメントは未だ有りません。</p>
     @else
+
         @foreach($comments as $comment)
             <div class="card mb-2">
                 <div class="card-body">

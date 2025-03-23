@@ -18,20 +18,6 @@
             <div class="card-body">
                 <h3 class="card-title">{{ $post->title }}</h3>
 
-                    <!-- <div class=row> -->
-                        <!-- card タイトル -->
-                        <!-- <div class="col">
-                           <h3 class="card-title">{{ $post->title }}</h3>
-                        </div> -->
-
-                        <!-- card 投稿者 -->
-                        <!-- <div class="col">
-                            <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p>
-                        </div>    
-
-                    </div> -->
-                <!-- <h3 class="card-title">{{ $post->title }}</h3>
-                <p class="text-muted">投稿者: {{ $post->title }}</p> -->
                     <div class=row>
                     <!-- card 中身 -->
                         <!-- card 失敗 -->
@@ -73,20 +59,6 @@
                 </form>
 
                 <div class="mt-3"></div>
-
-                <!-- いいねボタン -->
-                <!-- <button id="likeButton" class="btn {{ $post->likes->contains('user_id', auth()->id()) ? 'btn-outline-primary' : 'btn-primary' }}">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                </button> -->
-                <!-- いいね数の表示 -->
-                 <!-- <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p> -->
-                 <!-- <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p> -->
-
-                 <!-- <div> -->
-                <!-- いいね数の表示 -->
-                <!-- <p id="likeCount">{{ $post->likes->count() }} 件の注意！</p> -->
-                <!-- <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p> -->                    
-                <!-- </div> -->
 
             @endif
         </div>
@@ -148,41 +120,5 @@
         <div class="d-flex justify-content-center mt-4">
         {{ $comments->links() }}
         </div>
-
-        <!-- JavaScriptで非同期通信の処理 -->
-         <!-- <script>
-            $(document).ready(function(){
-                $('#likeButton').on('click', function(e){
-                    e.preventDefault();
-
-                    const button = $(this);
-                    const likeCountElement = $('#likeCount');
-
-                    $.ajax({
-                        url: "{{ route('posts.like', $post->id) }}",
-                        method: 'POST',
-                        data: {},
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(data) {
-                            if(data.liked){
-                                button.removeClass('btn-outline-primary').addClass('btn-primary');
-                                button.html('<i class="bi bi-exclamation-circle-fill"></i>');
-                            }else {
-                                button.removeClass('btn-primary').addClass('btn-outline-primary');
-                                button.html('<i class="bi bi-exclamation-circle"></i>');
-                            }
-
-                            likeCountElement.text(data.like_count + ' 件の注意！')
-                        },
-                        error: function(error) {
-                            console.error('Error', error);
-                        }
-                    });
-                });
-            });
-
-        </script> -->
 
 @endsection

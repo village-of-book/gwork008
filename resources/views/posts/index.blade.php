@@ -96,12 +96,6 @@
 
                     <div class="row">
 
-                    @if(Auth::check() && Auth::id() === $post->user_id)
-                        <div class="col">
-                            <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a>
-                        </div>
-                    @endif
-
                         <div class="col">
                             <!-- いいね数の表示 -->
                             <p><i class="bi bi-exclamation-circle-fill" style="color:blue;"></i> {{ $post->likes->count() }} 件</p>
@@ -116,6 +110,12 @@
                             <p class="text-muted">タイトル、失敗、成功の更新日時: </p>
                             <p class="text-muted">{{ $post->updated_at->format('Y-m-d H:i:s') }}</p>
                         </div>
+
+                        @if(Auth::check() && Auth::id() === $post->user_id)
+                        <div>
+                            <a href="{{ route('posts.show', $post->id)}}" class="btn btn-info">詳細</a>
+                        </div>
+                        @endif
 
                     </div>
 

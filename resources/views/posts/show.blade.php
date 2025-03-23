@@ -57,6 +57,13 @@
 
             <div class="mt-3"></div>
 
+            <!-- 公開・非公開の表示 -->
+            <p>
+            {!! $post->share ? '<i class="bi bi-people-fill" style="color:red"></i> 公開' : '<i class="bi bi-person-fill-lock"></i> 非公開' !!}
+            </p>
+
+            <div class="mt-3"></div>
+
             @if(Auth::check() && Auth::id() === $post->user_id)
                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">編集</a>
                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="d-inline">

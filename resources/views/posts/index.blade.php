@@ -37,8 +37,10 @@
             <div class="col-md-8">
                 <div class="input-group">
                     <select name="search_type" class="form-select">
-                        <option value="all_mine" {{ request('search_type') == 'all_mine' ? 'selected' : ''}}>自分の失敗</option>
-                        <option value="all_everyone" {{ request('search_type') == 'all_everyone' ? 'selected' : ''}}>みんなの失敗</option>                
+                        <option value="all_mine" {{ request('search_type') == 'all_mine' ? 'selected' : ''}}>自分の失敗（すべて）</option>
+                        <option value="share_mine" {{ request('search_type') == 'share_mine' ? 'selected' : ''}}>自分の失敗（公開のみ）</option>
+                        <option value="secret_mine" {{ request('search_type') == 'secret_mine' ? 'selected' : ''}}>自分の失敗（非公開のみ）</option>
+                        <option value="share_everyone" {{ request('search_type') == 'all_everyone' ? 'selected' : ''}}>みんなの失敗（公開のみ）</option>                
                     </select>
 
                     <input type="text" name="search" class="form-control" placeholder="検索キーワード" value="{{ request('search') }}">

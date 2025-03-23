@@ -25,11 +25,17 @@ class PostController extends Controller
             $searchKeyword = $request->input('search');
 
             switch($searchType){
-                case 'all_everyone':
-                    $query->where('title', 'like', '%' . $searchKeyword . '%');
+                case 'share_everyone':
+                    $query->where('share','1')->where('title', 'like', '%' . $searchKeyword . '%');
                     break;
                 case 'all_mine':
                     $query->where('user_id', Auth::id())->where('title', 'like', '%' . $searchKeyword . '%');
+                    break;
+                case 'share_mine':
+                    $query->where('share','1')->where('user_id', Auth::id())->where('title', 'like', '%' . $searchKeyword . '%');
+                    break;
+                case 'secret_mine':
+                    $query->where('share','0')->where('user_id', Auth::id())->where('title', 'like', '%' . $searchKeyword . '%');
                     break;
                 default:
                     $query->where('user_id', Auth::id())->where('title', 'like', '%' . $searchKeyword . '%');

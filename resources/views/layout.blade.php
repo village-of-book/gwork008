@@ -72,7 +72,10 @@
                 </div>
             </div>
 
-            <div class="navbar-brand text-white">こんにちは {{ $user->name }}さん</div>
+            <div class="navbar-brand text-white text-center">
+                <p>こんにちは {{ $user->name }}さん</p>
+                
+            </div>
                 
             <div class="ml-auto"></div>
                 <ul class="navbar-nav">

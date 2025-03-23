@@ -2,16 +2,21 @@
     // 現在認証しているユーザーを取得
     $user = auth()->user();
 
-    // postしているユーザーを取得
-    // use App\Models\User;
-    // use App\Models\Post;
-    // $poster_name = User::id->name;
+    use App\Models\Post;
+    $query = Post::query();
+    $failure_count = $query->where('user_id', Auth::id())->count();
+    $failure_height = $failure_count * 0.9;
+
 ?>
 @extends('layout')
 
 @section('content')
 <!-- 共通レイアウトに集約 -->
 <!-- <div class="container mt-5"> -->
+
+            <div class="alert alert-success text-center" role="alert">
+            貴方のこれまでの失敗<?=$failure_count?>件を、厚さ0.9mmのコピー用紙で積み上げると<?=$failure_height?>mmの高さです
+            </div>
     <!-- ページタイトル -->
     <h2>これまでの成功のもと</h2>
 

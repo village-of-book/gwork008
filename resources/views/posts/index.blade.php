@@ -1,6 +1,11 @@
 <?php
     // 現在認証しているユーザーを取得
     $user = auth()->user();
+
+    // postしているユーザーを取得
+    // use App\Models\User;
+    // use App\Models\Post;
+    // $poster_name = User::id->name;
 ?>
 @extends('layout')
 
@@ -64,7 +69,8 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <!-- card 投稿者 -->
-                    <!-- <p class="text-muted" style="text-align: right">投稿者: {{ $user->name }}</p> -->
+                    <p class="text-muted" style="text-align: right">投稿者: {{ $post->user->name }}</p>
+
                     <!-- card タイトル -->
                     <h3 class="card-title">{{ $post->title }}</h3>
                     <div class=row>

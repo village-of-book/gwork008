@@ -10,7 +10,8 @@ class Post extends Model
         'title',
         'content_failure',
         'content_success',
-        'user_id'
+        'user_id',
+        'share'
     ];
 
     public function comments()

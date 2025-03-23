@@ -106,6 +106,13 @@
                     <div class="mt-3"></div>
 
                     <div class="row">
+                        <div class="col">
+                            <!-- いいね数の表示 -->
+                            <p>
+                            {!! $post->share ? '<i class="bi bi-people-fill" style="color:red"></i> 公開' : '<i class="bi bi-person-fill-lock"></i> 非公開' !!}
+                            </p>
+                        </div>
+
 
                         <div class="col">
                             <!-- いいね数の表示 -->

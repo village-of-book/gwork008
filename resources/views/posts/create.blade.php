@@ -1,3 +1,8 @@
+<?php
+$kind    =array();
+$kind[0] = '非公開';
+$kind[1] = '他ユーザーにも公開';
+?>
 @extends('layout')
 
 @section('content')
@@ -60,6 +65,17 @@
             </div>
         </div>
 
+        <!-- 余白（レイアウト調整） -->
+        <div class="mt-3">
+
+        <div>
+            <select name="share" class="form-select" required>
+                <?php foreach( $kind as $i => $v){ ?>
+                    <option value="<?php echo $i ?>"><?php echo $v ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
         <div class="mt-3">
             <button type="submit" class="btn btn-success">投稿</button>
         </div>
@@ -68,7 +84,7 @@
         <a href="{{ route('posts.index')}}" class="btn btn-secondary">戻る</a>
     </div>
 
-    <!-- キーワド設定コード始まり -->
+    <!-- キーワード設定コード始まり -->
     <script>
         $('#keyword_set').on('click', function(){
             document.getElementsByName("title")[0].value += ' #' + $('#keyword_area').val() + ' ';
@@ -76,6 +92,6 @@
         });
 
     </script>
-    <!-- キーワド設定コード終わり -->
+    <!-- キーワード設定コード終わり -->
 
 @endsection

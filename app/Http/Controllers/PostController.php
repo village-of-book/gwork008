@@ -93,13 +93,15 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'content_failure' => 'required',
-            'content_success' => 'required'
+            'content_success' => 'required',
+            'share' => 'required'
         ]);
         $post = Post::create([
             'title' => $request->title,
             'content_failure' => $request->content_failure,
             'content_success' => $request->content_success,
-            'user_id'=> auth()->id()
+            'user_id'=> auth()->id(),
+            'share' => $request->share
         ]);
 
         return redirect()->route('posts.show',['post' => $post->id])->with('success','登録できました。');
@@ -137,7 +139,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'content_failure' => 'required',
-            'content_success' => 'required'
+            'content_success' => 'required',
+            'share' => 'required'
         ]);
         $post =Post::findOrFail($id);
 
@@ -148,7 +151,8 @@ class PostController extends Controller
         $post->update([
             'title' => $request->title,
             'content_failure' => $request->content_failure,
-            'content_success' => $request->content_success
+            'content_success' => $request->content_success,
+            'share' => $request->share
         ]);
         return redirect()->route('posts.show',['post' => $post->id])->with('success','登録できました。');
     }

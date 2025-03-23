@@ -1,3 +1,8 @@
+<?php
+$kind    =array();
+$kind[0] = '非公開';
+$kind[1] = '他ユーザーにも公開';
+?>
 @extends('layout')
 
 @section('content')
@@ -51,6 +56,19 @@
                 </div>
             </div>
         </div>
+
+            <!-- 余白（レイアウト調整） -->
+            <div class="mt-3">
+
+        <div>
+            <select name="share" class="form-select" required>
+                <?php foreach( $kind as $i => $v){ ?>
+                    <option value="<?php echo $i ?>"><?php echo $v ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
+
 
         <div class="mt-3">
             <button type="submit" class="btn btn-success">更新</button>

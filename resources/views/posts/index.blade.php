@@ -69,6 +69,11 @@
             </div>
         </div>
     </form>
+
+    <!-- ページネーションのリンク -->
+    <div class="d-flex justify-content-center mt-4">
+    {{ $posts->links() }}
+    </div>
     
     @foreach($posts as $post)
 
@@ -143,5 +148,10 @@
 
 
     @endforeach
-<!-- </div> -->
+
+    <!-- ページネーションのリンク -->
+    <div class="d-flex justify-content-center mt-4">
+    {{ $posts->links() }}
+    </div>
+
 @endsection

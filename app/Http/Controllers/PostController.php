@@ -72,7 +72,7 @@ class PostController extends Controller
     
         }
 
-        $posts = $query->get();
+        $posts = $query->paginate(10)->withQueryString();
         return view('posts.index', compact('posts'));
     }
 

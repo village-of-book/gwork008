@@ -12,9 +12,9 @@ Route::get('/', function () {
 
 Route::resource('posts', PostController::class);
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/posts', function () {
+    return view('posts.index');
+})->middleware(['auth', 'verified'])->name('posts.index');
 
 Route::get('/posts', function () {
     return view('posts.index');

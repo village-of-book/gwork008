@@ -6,6 +6,30 @@
     $query = Post::query();
     $failure_count = $query->where('user_id', Auth::id())->count();
     $failure_height = $failure_count * 0.9;
+    $failure_height_cm = $failure_height / 10;
+    $cm = round($failure_height_cm, 3);
+    $failure_height_m = $failure_height_cm / 100;
+    $m = round($failure_height_m, 4);
+
+    $buildings = [
+        "1" => "一円玉の厚みは1mmです",
+        "2" => "東京スカイツリーの高さは634メートルです",
+        "3" => "麻布台ヒルズ森JPタワーの高さは325メートルです",
+        "4" => "大阪のあべのハルカスの高さは300メートルあんねんで",
+        "5" => "横浜ランドマークタワーの高さは296メートルです",
+        "6" => "池袋のサンシャインは240メートルです",
+        "7" => "東京の都庁の高さは243メートルです",
+        "8" => "東京タワーの高さは333メートルです",
+        "9" => "福岡タワーの高さは234メートルあるとよ",
+        "10" => "富士山の標高は3,776メートルです",
+        "11" => "キリマンジャロの標高は3,776メートルです",
+        "12" => "エベレストの標高は8,848メートルです",
+        "13" => "札幌の時計台の高さは19メートルです",
+        "14" => "東京-福岡の距離は約1,085kmです",
+        "15" => "万里の長城の距離は21,196kmあります"
+      ];
+
+      $random_number = rand(1, 15);
 
 ?>
 @extends('layout')
@@ -15,7 +39,9 @@
 <!-- <div class="container mt-5"> -->
 
             <div class="alert alert-success text-center" role="alert">
-            貴方のこれまでの失敗<?=$failure_count?>件を、厚さ0.9mmのコピー用紙で積み上げると<?=$failure_height?>mmの高さです
+                貴方のこれまでの失敗<?=$failure_count?>件を、厚さ0.9mmのコピー用紙で積み上げると<?=$failure_height?>mmの高さです。つまり約<?=$cm?>cm、約<?=$m?>メートルです。
+                <hr>
+                ちなみに <?=$buildings[$random_number]?>、ちなみにね。
             </div>
     <!-- ページタイトル -->
     <h2>これまでの成功のもと</h2>

@@ -11,6 +11,7 @@
     $failure_height_m = $failure_height_cm / 100;
     $m = round($failure_height_m, 4);
 
+    // 配列メッセージ用（一覧画面）
     $buildings = [
         "1" => "一円玉の厚みは1mmです",
         "2" => "東京スカイツリーの高さは634メートルです",

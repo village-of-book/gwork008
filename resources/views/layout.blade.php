@@ -41,9 +41,6 @@
     // 現在認証しているユーザーを取得
     $user = auth()->user();
 
-    // 現在認証しているユーザーを取得
-    // $user_name =  $user('name');
-
 ?>
 
 <!DOCTYPE html>
